@@ -3,18 +3,51 @@
 <html>
   <head>
     <title>shadow-pagination doc</title>
+    <script src="https://unpkg.com/@weschiou/shadow@0.0.1/lib/shadow-pagination/shadow-pagination.min.js"></script>
     <style>
-      body {
-        width: 1000px;
+      .ref-table,
+      .ref-table thead,
+      .ref-table tbody,
+      .ref-table tr,
+      .ref-table th,
+      .ref-table td {
+        border: 1px solid #00000088;
+        text-align: left;
+      }
+      .ref-table {
+        border-collapse: collapse;
+      }
+      .ref-table td:nth-child(2) {
+        max-width: 18ch;
+      }
+      .ref-table td:nth-child(3),
+      .ref-table td:nth-child(4),
+      .ref-table td:nth-child(5) {
+        max-width: 50ch;
+      }
+      .ref-table tbody > tr:first-child > th {
+        background: yellow;
+      }
+      /* for example  */
+      #sty_01::part(page),
+      #sty_02::part(first),
+      #sty_03::part(next),
+      #sty_04::part(previous),
+      #sty_05::part(last),
+      #sty_06::part(ellipsis) {
+        color: blue;
+        font-weight: bold;
       }
     </style>
   </head>
 
   <body>
     <h1>&lt;shadow-pagination&gt; doc</h1>
+    <hr>
 
     <article class="article">
       <h2 class="article__title">Install</h2>
+      <hr>
       <section class="article__content">
         <section class="article__section">
 
@@ -22,6 +55,7 @@
           <code>&lt;script src="https://unpkg.com/@weschiou/shadow@0.0.1/lib/shadow-pagination/shadow-pagination.min.js"&gt;&lt;/script&gt;</code>
 
           <h3>npm</h3>
+          <!-- TODO: not really -->
           <p><code>npm i @weschiou/shadow</code></p>
 
         </section>
@@ -29,20 +63,514 @@
     </article>
 
     <article class="article">
-      <h2 class="article__title">Usage & examples</h2>
+      <h2 class="article__title">Reference</h2>
+      <hr>
+      <section class="article__content">
+        <section class="article__section">
+          <h3></h3>
+          <table class="ref-table">
+            <thead>
+              <tr>
+                <th> </th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Example</th>
+                <th>Example show</th>
+                <th>Remark</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th colspan="6">Content attributes</th></tr>
+              <tr>
+                <th><code>count</code></th>
+                <td>Number</td>
+                <td>The total pages.</td>
+                <td><code>&lt;shadow-pagination count="5"&gt;&lt;/shadow-pagination&gt;</code></td>
+                <td><shadow-pagination count="5"></shadow-pagination></td>
+              </tr>
+              <tr>
+                <th><code>value</code></th>
+                <td>Number</td>
+                <td>The current page.</td>
+                <td><code>&lt;shadow-pagination count="5" value="3"&gt;&lt;/shadow-pagination&gt;</code></td>
+                <td><shadow-pagination count="5" value="3"></shadow-pagination></td>
+              </tr>
+              <tr>
+                <th><code>circular</code></th>
+                <td>Boolean</td>
+                <td>Once the attribute is set, press the "previous" button when you are on the first page to jump to the last page, and press the "next" button when you are on the last page to jump to the first page.</td>
+                <td><code>&lt;shadow-pagination count="5" value="3" circular&gt;&lt;/shadow-pagination&gt;</code></td>
+                <td><em>Click "&lt;", "&gt;" to try it:</em><shadow-pagination count="5" value="3" circular></shadow-pagination></td>
+              </tr>
+              <tr>
+                <th><code>show-first-button</code></th>
+                <td>Boolean</td>
+                <td>Show the "first" button. Click "first" button to change value to 1.</td>
+                <td><code>&lt;shadow-pagination count="5" value="3" show-first-button&gt;&lt;/shadow-pagination&gt;</code></td>
+                <td><shadow-pagination count="5" value="3" show-first-button></shadow-pagination></td>
+              </tr>
+              <tr>
+                <th><code>show-last-button</code></th>
+                <td>Boolean</td>
+                <td>Show the "last" button. Click "last" button to change value to "count".</td>
+                <td><code>&lt;shadow-pagination count="5" value="3" show-last-button&gt;&lt;/shadow-pagination&gt;</code></td>
+                <td><shadow-pagination count="5" value="3" show-last-button></shadow-pagination></td>
+              </tr>
+              <tr>
+                <th><code>hide-previous-button</code></th>
+                <td>Boolean</td>
+                <td>Always hide "previous" button.</td>
+                <td><code>&lt;shadow-pagination count="5" hide-previous-button&gt;&lt;/shadow-pagination&gt;</code></td>
+                <td><shadow-pagination count="5" hide-previous-button></shadow-pagination></td>
+              </tr>
+              <tr>
+                <th><code>hide-next-button</code></th>
+                <td>Boolean</td>
+                <td>Always hide the "next" button.</td>
+                <td><code>&lt;shadow-pagination count="5" hide-next-button&gt;&lt;/shadow-pagination&gt;</code></td>
+                <td><shadow-pagination count="5" hide-next-button></shadow-pagination></td>
+              </tr>
+              <tr>
+                <th><code>next-smart-mode</code></th>
+                <td>enumerated ['hidden', 'disabled']</td>
+                <td>Hide(or disabled) the "next" button while at last page.</td>
+                <td>
+                  <ol>
+                    <li><code>&lt;shadow-pagination count="5" value="4" next-smart-mode="hidden"&gt;&lt;/shadow-pagination&gt;</code></li>
+                    <li><code>&lt;shadow-pagination count="5" value="4" next-smart-mode="disabled"&gt;&lt;/shadow-pagination&gt;</code></li>
+                  </ol>
+                </td>
+                <td>
+                  <ol><em>Click "&gt;" to try it:</em>
+                    <li><shadow-pagination count="5" value="4" next-smart-mode="hidden"></shadow-pagination></li>
+                    <li><shadow-pagination count="5" value="4" next-smart-mode="disabled"></shadow-pagination></li>
+                  </ol>
+                </td>
+              </tr>
+              <tr>
+                <th><code>previous-smart-mode</code></th>
+                <td>enumerated ['hidden', 'disabled']</td>
+                <td>Hide(or disabled) the "previous" button while at first page.</td>
+                <td>
+                  <ol>
+                    <li><code>&lt;shadow-pagination count="5" value="4" previous-smart-mode="hidden"&gt;&lt;/shadow-pagination&gt;</code></li>
+                    <li><code>&lt;shadow-pagination count="5" value="4" previous-smart-mode="disabled"&gt;&lt;/shadow-pagination&gt;</code></li>
+                  </ol>
+                </td>
+                <td>
+                  <ol><em>Click "&lt;" to try it:</em>
+                    <li><shadow-pagination count="5" value="2" previous-smart-mode="hidden"></shadow-pagination></li>
+                    <li><shadow-pagination count="5" value="2" previous-smart-mode="disabled"></shadow-pagination></li>
+                  </ol>
+                </td>
+              </tr>
+              <tr>
+                <th><code>ellipsis-style</code></th>
+                <td>enumerated ['hidden', <strong>'ellipsis'(default)</strong>, 'no-ellipsis']</td>
+                <td>Omit those pages that far away from the current page, replace those pages into <code>'...'</code>(<code>ellipsis</code>), <code>''</code>(<code>hidden</code>). Use <code>no-ellipsis</code> to not ellipsis.<br><em>You can control more details about ellipsis using attributes below.</em></td>
+                <td>
+                  <ol>
+                    <li>default(<code>ellipsis</code>): <code>&lt;shadow-pagination count="9" value="5"&gt;&lt;/shadow-pagination&gt;</code></li>
+                    <li><code>hidden</code>: <code>&lt;shadow-pagination count="9" value="5" ellipsis-style="hidden"&gt;&lt;/shadow-pagination&gt;</code></li>
+                    <li><code>no-ellipsis</code>: <code>&lt;shadow-pagination count="9" value="5" ellipsis-style="no-ellipsis"&gt;&lt;/shadow-pagination&gt;</code></li>
+                  </ol>
+                </td>
+                <td>
+                  <ol>
+                    <li><shadow-pagination count="9" value="5"></shadow-pagination></li>
+                    <li><shadow-pagination count="9" value="5" ellipsis-style="hidden"></shadow-pagination><code>hidden</code> look like strange, can I hide the starting pages and the ending pages? Sure, we will discuss it later.</li>
+                    <li><shadow-pagination count="9" value="5" ellipsis-style="no-ellipsis"></shadow-pagination></li>
+                  </ol>
+                </td>
+              </tr>
+              <tr>
+                <th><code>ellipsis-diameter</code></th>
+                <td>Number</td>
+                <td>Decide how many pages to display around the current page.</td>
+                <td>
+                  <ol>
+                    <li><code>&lt;shadow-pagination count="99" ellipsis-diameter="7"&gt;&lt;/shadow-pagination&gt;</code></li>
+                    <li><code>&lt;shadow-pagination count="99" value="50" ellipsis-diameter="7"&gt;&lt;/shadow-pagination&gt;</code></li>
+                    <li><code>&lt;shadow-pagination count="99" value="95" ellipsis-diameter="7"&gt;&lt;/shadow-pagination&gt;</code></li>
+                  </ol>
+                </td>
+                <td>
+                  <ol>
+                    <li><shadow-pagination count="99" ellipsis-diameter="7"></shadow-pagination></li>
+                    <li><shadow-pagination count="99" value="50" ellipsis-diameter="7"></shadow-pagination></li>
+                    <li><shadow-pagination count="99" value="96" ellipsis-diameter="7"></shadow-pagination></li>
+                  </ol>
+                </td>
+              </tr>
+              <tr>
+                <th><code>ellipsis-headsize</code></th>
+                <td>Number</td>
+                <td>Decide how many pages to display at head even it is far away from current page.</td>
+                <td><code>&lt;shadow-pagination count="9" value="9" ellipsis-headsize="2"&gt;&lt;/shadow-pagination&gt;</code></td>
+                <td><shadow-pagination count="9" value="9" ellipsis-headsize="2"></shadow-pagination></td>
+              </tr>
+              <tr>
+                <th><code>ellipsis-tailsize</code></th>
+                <td>Number</td>
+                <td>Decide how many pages to display at end even it is far away from current page.</td>
+                <td><code>&lt;shadow-pagination count="9" ellipsis-tailsize="3"&gt;&lt;/shadow-pagination&gt;</code></td>
+                <td><shadow-pagination count="9" ellipsis-tailsize="3"></shadow-pagination></td>
+              </tr>
+              <tr>
+                <th><code>ellipsis-blursize</code></th>
+                <td>Number</td>
+                <td>When you get a satisfactory pagination like this: (that means you don't want to change the value of ellipsis-headsize, ellipsis-tailsize and ellipsis-diameter)<shadow-pagination count="99" value="5"></shadow-pagination>You might think that 1 and 3 are so close, can I display 2 as well?<br>Yes, you can. When you think the ellipsis is unnecessary, use the "ellipsis-blursize" attribute to override the "ellipsis" related rules. When the number of omitted pages is below(or same as) the value of the "ellipsis-blursize" attribute, the ellipsis rule is not applied.</td>
+                <td><code>&lt;shadow-pagination count="99" value="5" ellipsis-blursize="1"&gt;&lt;/shadow-pagination&gt;</code></td>
+                <td><shadow-pagination count="99" value="5" ellipsis-blursize="1"></shadow-pagination></td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr><th colspan="6">DOM property (See <a href="https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#reflecting-content-attributes-in-idl-attributes">Reflecting content attributes in IDL attributes</a>)</th></tr>
+              <tr>
+                <th><code>count</code></th>
+                <td>Number</td>
+                <td>A reflection of <code>count</code> attribute.</td>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <th><code>value</code></th>
+                <td>Number</td>
+                <!-- TODO: not really -->
+                <td>A reflection of <code>value</code> attribute.</td>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <th><code>circular</code></th>
+                <td>Boolean</td>
+                <td>A reflection of <code>circular</code> attribute.</td>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <th><code>showFirstButton</code></th>
+                <td>Boolean</td>
+                <td>A reflection of <code>show-first-button</code> attribute.</td>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <th><code>showLastButton</code></th>
+                <td>Boolean</td>
+                <td>A reflection of <code>show-last-button</code> attribute.</td>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <th><code>hidePreviousButton</code></th>
+                <td>Boolean</td>
+                <td>A reflection of <code>hide-previous-button</code> attribute.</td>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <th><code>hideNextButton</code></th>
+                <td>Boolean</td>
+                <td>A reflection of <code>hide-next-button</code> attribute.</td>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <th><code>nextSmartMode</code></th>
+                <td>enumerated ['hidden', 'disabled']</td>
+                <td>A reflection of <code>next-smart-mode</code> attribute.</td>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <th><code>previousSmartMode</code></th>
+                <td>enumerated ['hidden', 'disabled']</td>
+                <td>A reflection of <code>previous-smart-mode</code> attribute.</td>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <th><code>ellipsisStyle</code></th>
+                <td>enumerated ['hidden', <strong>'ellipsis'(default)</strong>, 'no-ellipsis']</td>
+                <td>A reflection of <code>previous-smart-mode</code> attribute.</td>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <th><code>ellipsisDiameter</code></th>
+                <td>Number</td>
+                <td>A reflection of <code>ellipsis-diameter</code> attribute.</td>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <th><code>ellipsisHeadsize</code></th>
+                <td>Number</td>
+                <td>A reflection of <code>ellipsis-headsize</code> attribute.</td>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <th><code>ellipsisTailsize</code></th>
+                <td>Number</td>
+                <td>A reflection of <code>ellipsis-tailsize</code> attribute.</td>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <th><code>ellipsisBlursize</code></th>
+                <td>Number</td>
+                <td>A reflection of <code>ellipsis-blursize</code> attribute.</td>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <th><code>pagesFormatFn</code></th>
+                <td>Function</td>
+                <td>Allow you set a function to format page number. shadow-pagination will run it before rendering each page.</td>
+                <td><pre><code>
+&lt;shadow-pagination
+  id="pages-format-fn-example"
+  count="12
+&gt;&lt;/shadow-pagination&gt;
+
+&lt;script&gt;
+  const shadowPagination = document
+    .querySelector('#pages-format-fn-example');
+  if (shadowPagination) {
+    shadowPagination.pagesFormatFn = (page) =&gt; {
+      if (+page < 10) {
+        return '0' + page;
+      }
+      return page;
+    }
+  }
+&lt;/script&gt;
+                </code></pre></td>
+                <td>
+                  Pages formated:
+                  <shadow-pagination id="pages-format-fn-example" count="12"></shadow-pagination>
+                  <script type="module" defer>
+                    const shadowPagination = document.querySelector('#pages-format-fn-example');
+                    if (shadowPagination) {
+                      shadowPagination.pagesFormatFn = (page) => {
+                        if (+page < 10) {
+                          return '0' + page;
+                        }
+                        return page;
+                      }
+                    }
+                  </script>
+                </td>
+                <td>!NOTE: DOM attributes only accept strings, can not set pagesFormatFn by content attribute.</td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr><th colspan="6">Events</th></tr>
+              <tr>
+                <th><code>change</code></th>
+                <td>Event</td>
+                <td>Triggered while value changed.</td>
+                <td><pre><code>
+&lt;shadow-pagination
+  count="5"
+  id="change-event-example"
+&gt;&lt;/shadow-pagination&gt;
+
+&lt;script type="module" defer&gt;
+  const el = document
+    .querySelector('#change-event-example');
+  el.addEventListener('change', (event) =&gt; {
+    alert('current page: ' + event.target.value)
+  });
+&lt;/script&gt;
+                </code></pre></td>
+                <td>
+                  Click any button to try it:
+                  <shadow-pagination count="5" id="change-event-example"></shadow-pagination>
+                  <script type="module" defer>
+                    const el = document.querySelector('#change-event-example');
+                    el.addEventListener('change', (event) => {
+                      alert('current page: ' + event.target.value)
+                    });
+                  </script>
+                </td>
+              </tr>
+              <tr>
+                <th><code>firstpage</code></th>
+                <td>Event</td>
+                <td>Triggered while the "first" button clicked.</td>
+                <td>...</td>
+                <td>...</td>
+              </tr>
+              <tr>
+                <th><code>lastpage</code></th>
+                <td>Event</td>
+                <td>Triggered while the "last" button clicked.</td>
+                <td>...</td>
+                <td>...</td>
+              </tr>
+              <tr>
+                <th><code>previouspage</code></th>
+                <td>Event</td>
+                <td>Triggered while the "previous" button clicked.</td>
+                <td>...</td>
+                <td>...</td>
+              </tr>
+              <tr>
+                <th><code>nextpage</code></th>
+                <td>Event</td>
+                <td>Triggered while the "next" button clicked.</td>
+                <td>...</td>
+                <td>...</td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr><th colspan="6">Slots</th></tr>
+              <tr>
+                <th>previous</th>
+                <td>...</td>
+                <td>The "previous" button slot.</td>
+                <td><pre><code>
+&lt;shadow-pagination count="5"&gt;
+  &lt;span slot="previous"&gt;previous page&lt;/span&gt;
+&lt;/shadow-pagination&gt;
+                </code></pre></td>
+                <td><shadow-pagination count="5"><span slot="previous">previous page</span></shadow-pagination></td>
+              </tr>
+              <tr>
+                <th>next</th>
+                <td>...</td>
+                <td>The "next" button slot.</td>
+                <td><pre><code>
+&lt;shadow-pagination count="5"&gt;
+  &lt;span slot="next"&gt;▶&lt;/span&gt;
+&lt;/shadow-pagination&gt;
+                </code></pre></td>
+                <td><shadow-pagination count="5"><span slot="next">▶</span></shadow-pagination></td>
+              </tr>
+              <tr>
+                <th>first</th>
+                <td>...</td>
+                <td>The "first" button slot.</td>
+                <td><pre><code>
+&lt;shadow-pagination
+  count="5"
+  show-first-button
+&gt;
+  &lt;span slot="first"&gt;</code></pre><svg t="1640100165617" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2043" width="12" height="12"><path d="M1024 1024 256 512 1024 0Z" p-id="2044"></path><path d="M0 128l256 0 0 768-256 0 0-768Z" p-id="2045"></path></svg><pre><code>  &lt;/span&gt;
+&lt;/shadow-pagination&gt;
+                </code></pre>
+                </td>
+                <td><shadow-pagination count="5" show-first-button><span slot="first"><svg t="1640100165617" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2043" width="12" height="12"><path d="M1024 1024 256 512 1024 0Z" p-id="2044"></path><path d="M0 128l256 0 0 768-256 0 0-768Z" p-id="2045"></path></svg></span></shadow-pagination></td>
+                <td>Don't forget set <code>show-first-button</code> attribute.</td>
+              </tr>
+              <tr>
+                <th>last</th>
+                <td>...</td>
+                <td>The "last" button slot.</td>
+                <td></td>
+                <td><shadow-pagination count="5" show-last-button><button slot="last">button as slot</button></shadow-pagination></td>
+                <td>Don't forget set <code>show-last-button</code> attribute.</td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr><th colspan="6">Styles (See <a href="https://www.w3.org/TR/css-shadow-parts-1/#part">CSS Shadow Parts</a>)</th></tr>
+              <tr>
+                <th>::part(page)</th>
+                <td>...</td>
+                <td>Select all "page" button.</td>
+                <td><pre><code>
+&lt;style&gt;
+  #sty_01::part(page) {
+    color: blue;
+    font-weight: bold;
+  }
+&lt;/style&gt;
+&lt;shadow-pagination count="9" id="sty_01"&gt;&lt;/shadow-pagination&gt;
+                </code></pre></td>
+                <td><shadow-pagination count="9" id="sty_01"></shadow-pagination></td>
+              </tr>
+              <tr>
+                <th>::part(first)</th>
+                <td>...</td>
+                <td>Select the "first" button.</td>
+                <td><pre><code>
+&lt;style&gt;
+  #sty_02::part(first) {
+    color: blue;
+    font-weight: bold;
+  }
+&lt;/style&gt;
+&lt;shadow-pagination count="9" id="sty_02" show-first-button&gt;&lt;/shadow-pagination&gt;
+                </code></pre></td>
+                <td><shadow-pagination count="9" id="sty_02" show-first-button></shadow-pagination></td>
+              </tr>
+              <tr>
+                <th>::part(next)</th>
+                <td>...</td>
+                <td>Select the "next" button.</td>
+                <td><pre><code>
+&lt;style&gt;
+  #sty_03::part(next) {
+    color: blue;
+    font-weight: bold;
+  }
+&lt;/style&gt;
+&lt;shadow-pagination count="9" id="sty_03"&gt;&lt;/shadow-pagination&gt;
+                </code></pre></td>
+                <td><shadow-pagination count="9" id="sty_03"></shadow-pagination></td>
+              </tr>
+              <tr>
+                <th>::part(previous)</th>
+                <td>...</td>
+                <td>Select the "previous" button.</td>
+                <td><pre><code>
+&lt;style&gt;
+  #sty_04::part(previous) {
+    color: blue;
+    font-weight: bold;
+  }
+&lt;/style&gt;
+&lt;shadow-pagination count="9" id="sty_04"&gt;&lt;/shadow-pagination&gt;
+                </code></pre></td>
+                <td><shadow-pagination count="9" id="sty_04"></shadow-pagination></td>
+              </tr>
+              <tr>
+                <th>::part(last)</th>
+                <td>...</td>
+                <td>Select the "last" button.</td>
+                <td><pre><code>
+&lt;style&gt;
+  #sty_05::part(last) {
+    color: blue;
+    font-weight: bold;
+  }
+&lt;/style&gt;
+&lt;shadow-pagination count="9" id="sty_05" show-last-button&gt;&lt;/shadow-pagination&gt;
+                </code></pre></td>
+                <td><shadow-pagination count="9" id="sty_05" show-last-button></shadow-pagination></td>
+              </tr>
+              <tr>
+                <th>::part(ellipsis)</th>
+                <td>...</td>
+                <td>Select all ellipsis "..." span.</td>
+                <td><pre><code>
+&lt;style&gt;
+  #sty_06::part(ellipsis) {
+    color: blue;
+    font-weight: bold;
+  }
+&lt;/style&gt;
+&lt;shadow-pagination count="9" id="sty_06"&gt;&lt;/shadow-pagination&gt;
+                </code></pre></td>
+                <td><shadow-pagination count="9" id="sty_06"></shadow-pagination></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </section>
+    </article>
+
+    <article class="article">
+      <h2 class="article__title">Usage & Examples</h2>
+      <hr>
       <section class="article__content">
         <section class="article__section">
 
-          <h3>The <code>count</code> attribute</h3>
-
-          <p>The <code>count</code> attribute is required.</p>
           <p class="codepen" data-height="300" data-theme-id="light" data-default-tab="html,result" data-slug-hash="xxXrRPa" data-editable="true" data-user="weschiou" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
             <span>See the Pen <a href="https://codepen.io/weschiou/pen/xxXrRPa">
             hello-shadow-pagination</a> by Wes Chiou (<a href="https://codepen.io/weschiou">@weschiou</a>)
             on <a href="https://codepen.io">CodePen</a>.</span>
           </p>
 
-          <p>Change the <code>count</code> attribute using <code>.setAttribute()</code> or DOM property.</p>
           <p class="codepen" data-height="300" data-theme-id="light" data-default-tab="html,result" data-slug-hash="xxXrReM" data-editable="true" data-user="weschiou" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
             <span>See the Pen <a href="https://codepen.io/weschiou/pen/xxXrReM">
             shadow-pagination-count-setattribute</a> by Wes Chiou (<a href="https://codepen.io/weschiou">@weschiou</a>)
@@ -53,8 +581,15 @@
     </article>
 
     <article class="article">
-      <h2 class="article__title">Reference</h2>
-      <section class="article__content"></section>
+      <h2 class="article__title">What's next?</h2>
+      <hr>
+      <section class="article__content">
+        <section class="article__section">
+
+          <h3></h3>
+
+        </section>
+      </section>
     </article>
 
     <!-- for codepen -->
