@@ -3,7 +3,7 @@
 <html>
   <head>
     <title>shadow-pagination doc</title>
-    <script src="https://unpkg.com/@weschiou/shadow@0.0.1/lib/shadow-pagination/shadow-pagination.min.js"></script>
+    <script src="https://unpkg.com/@weschiou/shadow@latest/lib/shadow-pagination/shadow-pagination.min.js"></script>
     <style>
       .ref-table,
       .ref-table thead,
@@ -97,43 +97,55 @@
               </tr>
               <tr>
                 <th><code>circular</code></th>
-                <td>Boolean</td>
-                <td>Once the attribute is set, press the "previous" button when you are on the first page to jump to the last page, and press the "next" button when you are on the last page to jump to the first page.</td>
+                <td><a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attribute" target="_blank">boolean attribute</a></td>
+                <td>Once the attribute is set, press the "&lt;" button when you are on the page 1 to jump to the last page, and press the "&gt;" button when you are on the last page to jump to the page 1.</td>
                 <td><code>&lt;shadow-pagination count="5" value="3" circular&gt;&lt;/shadow-pagination&gt;</code></td>
                 <td><em>Click "&lt;", "&gt;" to try it:</em><shadow-pagination count="5" value="3" circular></shadow-pagination></td>
               </tr>
               <tr>
                 <th><code>show-first-button</code></th>
-                <td>Boolean</td>
-                <td>Show the "first" button. Click "first" button to change value to 1.</td>
+                <td><a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attribute" target="_blank">boolean attribute</a></td>
+                <td>Show the "⇤" button. Click the "⇤" button to go to page 1.</td>
                 <td><code>&lt;shadow-pagination count="5" value="3" show-first-button&gt;&lt;/shadow-pagination&gt;</code></td>
-                <td><shadow-pagination count="5" value="3" show-first-button></shadow-pagination></td>
+                <td>
+                  <em>Click "⇤" to try it:</em>
+                  <shadow-pagination count="5" value="3" show-first-button></shadow-pagination>
+                </td>
               </tr>
               <tr>
                 <th><code>show-last-button</code></th>
-                <td>Boolean</td>
-                <td>Show the "last" button. Click "last" button to change value to "count".</td>
+                <td><a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attribute" target="_blank">boolean attribute</a></td>
+                <td>Show the "⇥" button. Click the "⇥" button to go to the last page.</td>
                 <td><code>&lt;shadow-pagination count="5" value="3" show-last-button&gt;&lt;/shadow-pagination&gt;</code></td>
-                <td><shadow-pagination count="5" value="3" show-last-button></shadow-pagination></td>
+                <td>
+                  <em>Click "⇥" to try it:</em>
+                  <shadow-pagination count="5" value="3" show-last-button></shadow-pagination>
+                </td>
               </tr>
               <tr>
                 <th><code>hide-previous-button</code></th>
-                <td>Boolean</td>
-                <td>Always hide "previous" button.</td>
+                <td><a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attribute" target="_blank">boolean attribute</a></td>
+                <td>Always hide the "&lt;" button.</td>
                 <td><code>&lt;shadow-pagination count="5" hide-previous-button&gt;&lt;/shadow-pagination&gt;</code></td>
                 <td><shadow-pagination count="5" hide-previous-button></shadow-pagination></td>
               </tr>
               <tr>
                 <th><code>hide-next-button</code></th>
-                <td>Boolean</td>
-                <td>Always hide the "next" button.</td>
+                <td><a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attribute" target="_blank">boolean attribute</a></td>
+                <td>Always hide the "&gt;" button.</td>
                 <td><code>&lt;shadow-pagination count="5" hide-next-button&gt;&lt;/shadow-pagination&gt;</code></td>
                 <td><shadow-pagination count="5" hide-next-button></shadow-pagination></td>
               </tr>
               <tr>
                 <th><code>next-smart-mode</code></th>
-                <td>enumerated ['hidden', 'disabled']</td>
-                <td>Hide(or disabled) the "next" button while at last page.</td>
+                <td>
+                  <a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#enumerated-attribute" target="_blank">enumerated attribute</a>
+                  <ul>acceptable values:
+                    <li>hidden</li>
+                    <li>disabled</li>
+                  </ul>
+                </td>
+                <td>Hide (or disabled) the "&gt;" button while at the last page.</td>
                 <td>
                   <ol>
                     <li><code>&lt;shadow-pagination count="5" value="4" next-smart-mode="hidden"&gt;&lt;/shadow-pagination&gt;</code></li>
@@ -149,8 +161,14 @@
               </tr>
               <tr>
                 <th><code>previous-smart-mode</code></th>
-                <td>enumerated ['hidden', 'disabled']</td>
-                <td>Hide(or disabled) the "previous" button while at first page.</td>
+                <td>
+                  <a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#enumerated-attribute" target="_blank">enumerated attribute</a>
+                  <ul>acceptable values:
+                    <li>hidden</li>
+                    <li>disabled</li>
+                  </ul>
+                </td>
+                <td>Hide (or disabled) the "&lt;" button while at page 1.</td>
                 <td>
                   <ol>
                     <li><code>&lt;shadow-pagination count="5" value="4" previous-smart-mode="hidden"&gt;&lt;/shadow-pagination&gt;</code></li>
@@ -166,7 +184,14 @@
               </tr>
               <tr>
                 <th><code>ellipsis-style</code></th>
-                <td>enumerated ['hidden', <strong>'ellipsis'(default)</strong>, 'no-ellipsis']</td>
+                <td>
+                  <a href="https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#enumerated-attribute" target="_blank">enumerated attribute</a>
+                  <ul>acceptable values:
+                    <li>hidden</li>
+                    <li><strong>ellipsis (default)</strong></li>
+                    <li>no-ellipsis</li>
+                  </ul>
+                </td>
                 <td>Omit those pages that far away from the current page, replace those pages into <code>'...'</code>(<code>ellipsis</code>), <code>''</code>(<code>hidden</code>). Use <code>no-ellipsis</code> to not ellipsis.<br><em>You can control more details about ellipsis using attributes below.</em></td>
                 <td>
                   <ol>
@@ -177,15 +202,15 @@
                 </td>
                 <td>
                   <ol>
-                    <li><shadow-pagination count="9" value="5"></shadow-pagination></li>
-                    <li><shadow-pagination count="9" value="5" ellipsis-style="hidden"></shadow-pagination><code>hidden</code> look like strange, can I hide the starting pages and the ending pages? Sure, we will discuss it later.</li>
-                    <li><shadow-pagination count="9" value="5" ellipsis-style="no-ellipsis"></shadow-pagination></li>
+                    <li><shadow-pagination count="10" value="5"></shadow-pagination></li>
+                    <li><shadow-pagination count="10" value="5" ellipsis-style="hidden"></shadow-pagination><code>hidden</code> look like strange, can I hide the starting pages and the ending pages? Sure, we will discuss it later.</li>
+                    <li><shadow-pagination count="10" value="5" ellipsis-style="no-ellipsis"></shadow-pagination></li>
                   </ol>
                 </td>
               </tr>
               <tr>
                 <th><code>ellipsis-diameter</code></th>
-                <td>Number</td>
+                <td><a href="https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#limited-to-only-non-negative-numbers-greater-than-zero" target="_blank">non-negative numbers greater than zero</a><br>(1-2147483647)</td>
                 <td>Decide how many pages to display around the current page.</td>
                 <td>
                   <ol>
@@ -204,21 +229,21 @@
               </tr>
               <tr>
                 <th><code>ellipsis-headsize</code></th>
-                <td>Number</td>
+                <td><a href="https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#limited-to-only-non-negative-numbers" target="_blank">non-negative numbers</a><br>(0-2147483647)</td>
                 <td>Decide how many pages to display at head even it is far away from current page.</td>
                 <td><code>&lt;shadow-pagination count="9" value="9" ellipsis-headsize="2"&gt;&lt;/shadow-pagination&gt;</code></td>
                 <td><shadow-pagination count="9" value="9" ellipsis-headsize="2"></shadow-pagination></td>
               </tr>
               <tr>
                 <th><code>ellipsis-tailsize</code></th>
-                <td>Number</td>
+                <td><a href="https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#limited-to-only-non-negative-numbers" target="_blank">non-negative numbers</a><br>(0-2147483647)</td>
                 <td>Decide how many pages to display at end even it is far away from current page.</td>
                 <td><code>&lt;shadow-pagination count="9" ellipsis-tailsize="3"&gt;&lt;/shadow-pagination&gt;</code></td>
                 <td><shadow-pagination count="9" ellipsis-tailsize="3"></shadow-pagination></td>
               </tr>
               <tr>
                 <th><code>ellipsis-blursize</code></th>
-                <td>Number</td>
+                <td><a href="https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#limited-to-only-non-negative-numbers" target="_blank">non-negative numbers</a><br>(0-2147483647)</td>
                 <td>When you get a satisfactory pagination like this: (that means you don't want to change the value of ellipsis-headsize, ellipsis-tailsize and ellipsis-diameter)<shadow-pagination count="99" value="5"></shadow-pagination>You might think that 1 and 3 are so close, can I display 2 as well?<br>Yes, you can. When you think the ellipsis is unnecessary, use the "ellipsis-blursize" attribute to override the "ellipsis" related rules. When the number of omitted pages is below(or same as) the value of the "ellipsis-blursize" attribute, the ellipsis rule is not applied.</td>
                 <td><code>&lt;shadow-pagination count="99" value="5" ellipsis-blursize="1"&gt;&lt;/shadow-pagination&gt;</code></td>
                 <td><shadow-pagination count="99" value="5" ellipsis-blursize="1"></shadow-pagination></td>
@@ -565,17 +590,22 @@
       <section class="article__content">
         <section class="article__section">
 
-          <p class="codepen" data-height="300" data-theme-id="light" data-default-tab="html,result" data-slug-hash="xxXrRPa" data-editable="true" data-user="weschiou" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-            <span>See the Pen <a href="https://codepen.io/weschiou/pen/xxXrRPa">
-            hello-shadow-pagination</a> by Wes Chiou (<a href="https://codepen.io/weschiou">@weschiou</a>)
-            on <a href="https://codepen.io">CodePen</a>.</span>
-          </p>
+          <h3>google.com pagination by shadow-pagination component</h3>
 
           <p class="codepen" data-height="300" data-theme-id="light" data-default-tab="html,result" data-slug-hash="xxXrReM" data-editable="true" data-user="weschiou" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
             <span>See the Pen <a href="https://codepen.io/weschiou/pen/xxXrReM">
-            shadow-pagination-count-setattribute</a> by Wes Chiou (<a href="https://codepen.io/weschiou">@weschiou</a>)
+            google.com pagination by shadow-pagination component</a> by Wes Chiou (<a href="https://codepen.io/weschiou">@weschiou</a>)
             on <a href="https://codepen.io">CodePen</a>.</span>
           </p>
+
+          <h3>bing.com pagination by shadow-pagination component</h3>
+
+          <p class="codepen" data-height="300" data-theme-id="light" data-default-tab="html,result" data-slug-hash="xxXrRPa" data-editable="true" data-user="weschiou" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+            <span>See the Pen <a href="https://codepen.io/weschiou/pen/xxXrRPa">
+            bing.com pagination by shadow-pagination component</a> by Wes Chiou (<a href="https://codepen.io/weschiou">@weschiou</a>)
+            on <a href="https://codepen.io">CodePen</a>.</span>
+          </p>
+
         </section>
       </section>
     </article>
